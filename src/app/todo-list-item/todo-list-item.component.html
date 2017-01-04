@@ -1,0 +1,12 @@
+<td scope="row">{{todo.id}}</td>
+<td><span [class.completed]="todo.completed">{{todo.text}}</span></td>
+<td>{{todo.time | date:'d/M/y, H:mm:ss'}}</td>
+<td>
+    <span *ngIf="!todo.completed">To do</span>
+    <span *ngIf="todo.completed">Done</span>
+</td>
+<td>
+    <button class="btn" *ngIf="todo.completed" (click)="uncomplete.emit(todo)">X</button>
+    <button class="btn" *ngIf="!todo.completed" (click)="complete.emit(todo)">V</button>
+    <button class="btn" (click)="destroy.emit(todo)"> Delete</button>
+</td>

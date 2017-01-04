@@ -10,3 +10,18 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+/*
+//main entry point
+import {bootstrap} from 'angular2/platform/browser';
+import {App} from './app.component';
+import {provideStore} from '@ngrx/store'
+import {todos, visibilityFilter} from './app.reducers';
+
+bootstrap(App, [
+  provideStore({
+    todos,
+    visibilityFilter
+  })  
+])
+.catch(err => console.error(err));*/

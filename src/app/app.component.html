@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+    <h2>Todos</h2>
+    <new-todo (create)="addTodo($event)"></new-todo>
+    <todo-list
+            [todos]="todos | async"
+            [filter]="filter | async"
+            (complete)="completeTodo($event)"
+            (uncomplete)="uncompleteTodo($event)"
+            (delete)="deleteTodo($event)"
+    ></todo-list>
+    <div *ngIf="(todos | async)[0]">
+        <h3>Filter:</h3>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary" (click)="show('ALL')">All</button>
+            <button type="button" class="btn btn-secondary" (click)="show('PENDING')">Pending</button>
+            <button type="button" class="btn btn-secondary" (click)="show('COMPLETE')">Completed</button>
+        </div>
+    </div>
+</div>

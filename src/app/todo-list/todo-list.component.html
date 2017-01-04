@@ -1,0 +1,23 @@
+<div *ngIf="todos[0]">Filtered By: {{filter}}</div>
+<table class="table table-hover">
+<thead *ngIf="todos[0]">
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Time</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody *ngIf="todos[0]">
+      <tr todo-list-item
+        *ngFor="let todo of filtered"
+        [todo]="todo"
+        [ngClass]="{'table-success': todo.completed,'table-warning': !todo.completed}"
+        (complete)="completeTodo.emit($event)"
+        (uncomplete)="uncompleteTodo.emit($event)"
+        (delete)="deleteTodo.emit($event)"
+      ></tr>
+</tbody>
+</table>
+<h4 *ngIf="!todos[0]">Hurray! No todos for You, add some if you like</h4>

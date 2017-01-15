@@ -1,9 +1,10 @@
-import {Component, Output, EventEmitter} from '@angular/core'
+import {Component, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core'
 
 @Component({
   selector: 'new-todo',
   templateUrl: './new-todo.component.html',
-  styleUrls: ['./new-todo.component.css']
+  styleUrls: ['./new-todo.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewTodoComponent {
   private alert: boolean;

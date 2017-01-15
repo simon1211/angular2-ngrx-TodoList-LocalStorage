@@ -1,4 +1,4 @@
 <div class="form-inline form-group">
-      <input type="text" class="form-control" [ngClass]="{'alert-me': alert}" #newtodo placeholder="Add a todo" />
+      <input type="text" class="form-control" (keydown.enter)="saveTodo(newtodo)" [ngClass]="{'alert-me': alert}" #newtodo placeholder="Add a todo" />
       <button class="btn btn-primary" (click)="saveTodo(newtodo)">Add</button>
     </div>

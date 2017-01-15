@@ -6,7 +6,7 @@
     <span *ngIf="todo.completed">Done</span>
 </td>
 <td>
-    <button class="btn" *ngIf="todo.completed" (click)="uncomplete.emit(todo)">X</button>
-    <button class="btn" *ngIf="!todo.completed" (click)="complete.emit(todo)">V</button>
-    <button class="btn" (click)="destroy.emit(todo)"> Delete</button>
+    <button class="btn btn-warning" *ngIf="todo.completed" (click)="uncomplete.emit(todo)">X</button>
+    <button class="btn btn-success" *ngIf="!todo.completed" (click)="complete.emit(todo)">V</button>
+    <!--<button class="btn " (click)="destroy.emit(todo)">Delete</button>-->
 </td>

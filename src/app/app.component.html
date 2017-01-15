@@ -1,19 +1,24 @@
 <div class="container">
+    <div class="jumbotron">
+        <h1>Angular 2 + Ngrx Todo list with Local Storage</h1>
+    </div>
     <h2>Todos</h2>
     <new-todo (create)="addTodo($event)"></new-todo>
     <todo-list
-            [todos]="todos | async"
-            [filter]="filter | async"
+            [todos]="todos$ | async"
+            [filter]="filter$ | async"
             (complete)="completeTodo($event)"
+            (onUpdate)="updateTodos($event)"
             (uncomplete)="uncompleteTodo($event)"
-            (delete)="deleteTodo($event)"
     ></todo-list>
-    <div *ngIf="(todos | async)[0]">
+    <!--(delete)="deleteTodo($event)"-->
+
+    <div *ngIf="(todos$ | async)[0]">
         <h3>Filter:</h3>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary" (click)="show('ALL')">All</button>
-            <button type="button" class="btn btn-secondary" (click)="show('PENDING')">Pending</button>
-            <button type="button" class="btn btn-secondary" (click)="show('COMPLETE')">Completed</button>
+            <button type="button" class="btn btn-secondary" (click)="showAll()">All</button>
+            <button type="button" class="btn btn-secondary" (click)="showPending()">Pending</button>
+            <button type="button" class="btn btn-secondary" (click)="showComplete()">Completed</button>
         </div>
     </div>
 </div>

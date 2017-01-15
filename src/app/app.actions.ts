@@ -1,8 +1,31 @@
+/*
+* NOTE:
+* =====
+* This file holds the module's available actions definitions, to use across the app
+* (pending the module is imported to wherever it is used)
+* */
+
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TodoAppActions {
+
+     static APP_INIT = '[app] App Initialized';
+    appInit(): Action {
+        return {
+            type: TodoAppActions.APP_INIT,
+            payload: {}
+        };
+    }
+
+    static EMPTY_LOCAL_STORAGE = '[app] Empty local storage';
+    emptyLocalStorage(): Action {
+        return {
+            type: TodoAppActions.EMPTY_LOCAL_STORAGE,
+            payload: {}
+        };
+    }
 
 static ADD_TODO = '[app] Add Todo';
     addTodo(newTodo): Action {
@@ -11,15 +34,7 @@ static ADD_TODO = '[app] Add Todo';
       payload: newTodo
 	  };
     }
-	
-	static UPDATE_TODO = '[app] Update Todo';
-    updateTodo(todo): Action {
-		return {
-      type: TodoAppActions.UPDATE_TODO,
-      payload: todo
-	  };
-    }
-	
+
   static COMPLETE_TODO = '[app] Complete Todo';
     completeTodo(todo): Action {
 		return {
@@ -35,28 +50,28 @@ static ADD_TODO = '[app] Add Todo';
             payload: todo
         };
     }
-    
-    static DELETE_TODO = '[app] Delete Todo';
+
+    /*static DELETE_TODO = '[app] Delete Todo';
     deleteTodo(todo): Action {
 		return {
       type: TodoAppActions.DELETE_TODO,
       payload: todo
 	  };
-    }
-    
-    static SHOW = '[app] show';
-    show(filter): Action {
+    }*/
+
+    static FILTER = '[app] Filter';
+    filter(status): Action {
 		return {
-      type: TodoAppActions.SHOW,
-      payload: filter
+      type: TodoAppActions.FILTER,
+      payload: status
 	  };
     }
 
-    static GET_CACHE = '[app] Get Todos From Cache';
-    getCache(data): Action {
+    static GET_TODOS_FROM_LOCAL_STORAGE = '[app] Get Todos From Local Storage';
+    getTodosFromLocalStorage(todos): Action {
         return {
-            type: TodoAppActions.GET_CACHE,
-            payload: data
+            type: TodoAppActions.GET_TODOS_FROM_LOCAL_STORAGE,
+            payload: todos
         };
     }
 }

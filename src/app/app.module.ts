@@ -1,3 +1,10 @@
+/*
+ * NOTE:
+ * =====
+ * This file defines this module and it's dependencies
+ * */
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +18,10 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { NewTodoComponent } from './new-todo/new-todo.component';
 import {todos, visibilityFilter} from './app.reducers';
 import {TodoAppActions} from './app.actions';
+import {AppSelectors} from './app.selectors';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from "./app.effects";
+import {TodosService} from "./services/todos.service";
 
 @NgModule({
   declarations: [
@@ -23,6 +34,7 @@ import {TodoAppActions} from './app.actions';
     BrowserModule,
     FormsModule,
     HttpModule,
+    EffectsModule.run(AppEffects),
 	StoreModule.provideStore(
         compose(
             storeLogger(),
@@ -30,7 +42,7 @@ import {TodoAppActions} from './app.actions';
         )({todos, visibilityFilter})
     )
   ],
-  providers: [TodoAppActions],
+  providers: [TodoAppActions, AppSelectors, TodosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

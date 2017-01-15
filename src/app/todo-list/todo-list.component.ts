@@ -16,7 +16,7 @@ export class TodoListComponent implements OnChanges {
     @Input('filter') filter;
     @Output('complete') completeTodo = new EventEmitter();
     @Output('uncomplete') uncompleteTodo = new EventEmitter();
-    @Output('onUpdate') onUpdate = new EventEmitter();
+    @Output('onupdate') onupdate = new EventEmitter();
    // @Output('delete') deleteTodo = new EventEmitter();
 
 
@@ -41,6 +41,6 @@ export class TodoListComponent implements OnChanges {
                 break;
         }
 
-        this.onUpdate.emit(this.todos);
+        this.onupdate.emit(this.todos);
     }
 }

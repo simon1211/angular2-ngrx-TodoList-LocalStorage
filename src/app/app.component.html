@@ -7,8 +7,8 @@
     <todo-list
             [todos]="todos$ | async"
             [filter]="filter$ | async"
+            (onupdate)="updateTodos($event)"
             (complete)="completeTodo($event)"
-            (onUpdate)="updateTodos($event)"
             (uncomplete)="uncompleteTodo($event)"
     ></todo-list>
     <!--(delete)="deleteTodo($event)"-->

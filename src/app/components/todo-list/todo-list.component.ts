@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy} from '@angular/core';
-import * as fromModel from '../app.models';
+import * as fromModel from '../../app.models';
 
 @Component({
     selector: 'todo-list',

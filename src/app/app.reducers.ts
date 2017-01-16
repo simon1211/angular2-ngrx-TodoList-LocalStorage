@@ -29,7 +29,7 @@ export const todos = (state = initialState.todos, {type, payload}) => {
             else {
                 nextId = 1;
             }
-            return state.concat([Object.assign({}, payload, {id: nextId})]);
+            return state.concat([Object.assign({}, payload, {id: nextId, completed: false})]);
 
         case TodoAppActions.COMPLETE_TODO:
             return state.map(todo => {
@@ -42,7 +42,7 @@ export const todos = (state = initialState.todos, {type, payload}) => {
             return state.map(todo => {
                 return todo.id !== payload.id ?
                     todo :
-                    Object.assign({}, todo, {completed: null})
+                    Object.assign({}, todo, {completed: false})
             });
 
         /*case TodoAppActions.DELETE_TODO:

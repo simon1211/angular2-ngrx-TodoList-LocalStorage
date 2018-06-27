@@ -34,8 +34,8 @@ import {TodosService} from "./services/todos.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    EffectsModule.run(AppEffects),
-    StoreModule.provideStore(rootReducer())
+    EffectsModule,
+    StoreModule
   ],
   providers: [TodoAppActions, AppSelectors, TodosService],
   bootstrap: [AppComponent]
